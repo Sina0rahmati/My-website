@@ -1,68 +1,77 @@
-@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
-
-* {
+body {
+    font-family: 'Vazirmatn', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Vazirmatn', sans-serif;
     direction: rtl;
 }
 
-body {
-    height: 100vh;
-    background: linear-gradient(-45deg, #ffecd2, #fcb69f, #a1c4fd, #c2e9fb);
-    background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.container {
     text-align: center;
-    color: #333;
-    padding: 2rem;
+    padding: 60px 20px;
+    color: white;
 }
 
-@keyframes gradient {
+/* پس‌زمینه رنگارنگ */
+.colorful-background {
+    background: linear-gradient(270deg, red, orange, yellow, green, cyan, blue, violet);
+    background-size: 1400% 1400%;
+    animation: gradientShift 20s ease infinite;
+    min-height: 100vh;
+}
+
+@keyframes gradientShift {
     0% {background-position: 0% 50%;}
     50% {background-position: 100% 50%;}
     100% {background-position: 0% 50%;}
 }
 
-.container {
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
 h1 {
-    font-size: 2.5rem;
-    color: #6200ea;
+    font-size: 48px;
+    margin-bottom: 20px;
 }
 
 .intro {
-    font-size: 1.5rem;
-    margin: 1rem 0;
-    font-weight: 500;
-    color: #444;
+    font-size: 24px;
+    margin-bottom: 40px;
 }
 
 footer {
-    margin-top: 2rem;
-    font-size: 1rem;
-    color: #666;
+    font-size: 16px;
+    opacity: 0.8;
 }
 
+/* راه‌های ارتباطی */
 .contact-footer {
-    background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
-    padding: 40px 0;
+    background-color: #222;
+    padding: 20px 0;
     text-align: center;
-    margin-top: 100px;
+    color: white;
+    font-size: 14px;
+    margin-top: 50px;
 }
 
 .contact-box {
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 16px;
-    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #555;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 12px 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 5px 0;
+    color: white;
+    text-decoration: none;
+}
+
+.contact-item img {
+    width: 20px;
+    height: 20px;
+}
     display: inline-block;
     color: white;
 }
