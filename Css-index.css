@@ -1,20 +1,53 @@
-body {
-    font-family: sans-serif;
-    background-color: #f3f3f3;
-    color: #333;
-    text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Vazirmatn', sans-serif;
+    direction: rtl;
 }
 
-header {
-    background-color: #6200ee;
-    color: white;
-    padding: 1rem;
+body {
+    height: 100vh;
+    background: linear-gradient(-45deg, #ffecd2, #fcb69f, #a1c4fd, #c2e9fb);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #333;
+    padding: 2rem;
+}
+
+@keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #6200ea;
+}
+
+.intro {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    font-weight: 500;
+    color: #444;
 }
 
 footer {
-    background-color: #eee;
-    padding: 1rem;
     margin-top: 2rem;
+    font-size: 1rem;
+    color: #666;
 }
