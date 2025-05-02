@@ -51,3 +51,34 @@ footer {
     font-size: 1rem;
     color: #666;
 }
+
+.contact-footer {
+    background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+    padding: 40px 0;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.contact-box {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    padding: 20px;
+    display: inline-block;
+    color: white;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 10px 0;
+    justify-content: center;
+}
+
+.contact-item img {
+    width: 24px;
+    height: 24px;
+}
