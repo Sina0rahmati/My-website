@@ -1,17 +1,41 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa">
 <head>
     <meta charset="UTF-8">
     <title>سایت سینا</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container colorful-background">
-        <h1><strong>سلام</strong></h1>
+        <h1 class="hello-text">Hello</h1>
         <p class="intro">من سینا هستم، یه برنامه‌نویس تازه‌کارم</p>
         <footer>ساخته شده با عشق</footer>
+    </div>
+
+    <!-- ساعت آنالوگ -->
+    <div class="clock">
+        <div class="clock-face">
+            <div class="hand hour-hand"></div>
+            <div class="hand min-hand"></div>
+            <div class="hand second-hand"></div>
+            <div class="numerals">
+                <span class="roman" style="--n:1">I</span>
+                <span class="roman" style="--n:2">II</span>
+                <span class="roman" style="--n:3">III</span>
+                <span class="roman" style="--n:4">IV</span>
+                <span class="roman" style="--n:5">V</span>
+                <span class="roman" style="--n:6">VI</span>
+                <span class="roman" style="--n:7">VII</span>
+                <span class="roman" style="--n:8">VIII</span>
+                <span class="roman" style="--n:9">IX</span>
+                <span class="roman" style="--n:10">X</span>
+                <span class="roman" style="--n:11">XI</span>
+                <span class="roman" style="--n:12">XII</span>
+            </div>
+        </div>
     </div>
 
     <!-- راه‌های ارتباطی پایین صفحه -->
@@ -30,5 +54,27 @@
 
     <!-- آیکون چرخشی موس -->
     <img src="https://img.icons8.com/ios-filled/50/ffffff/mouse.png" class="mouse-icon" alt="Mouse Icon">
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const tehranOffset = 3.5 * 60 * 60 * 1000;
+            const tehranTime = new Date(now.getTime() + tehranOffset);
+            const seconds = tehranTime.getUTCSeconds();
+            const minutes = tehranTime.getUTCMinutes();
+            const hours = tehranTime.getUTCHours();
+
+            const secondDeg = ((seconds / 60) * 360);
+            const minuteDeg = ((minutes / 60) * 360 + (seconds / 60) * 6);
+            const hourDeg = ((hours % 12) / 12) * 360 + (minutes / 60) * 30;
+
+            document.querySelector('.second-hand').style.transform = `rotate(${secondDeg}deg)`;
+            document.querySelector('.min-hand').style.transform = `rotate(${minuteDeg}deg)`;
+            document.querySelector('.hour-hand').style.transform = `rotate(${hourDeg}deg)`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
 </body>
 </html>
