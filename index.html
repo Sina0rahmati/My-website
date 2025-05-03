@@ -1,59 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
     <title>My Website</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <div class="content">
-        <h1 class="hello">Hello</h1>
-        <p>من سینا رحمتی هستم، برنامه‌نویس</p>
+    <div class="container">
+        <h1>Hello</h1>
+        <p>من سینا هستم، برنامه‌نویس</p>
     </div>
 
-    <div class="clock">
-        <div class="clock-face">
-            <div class="hand hour-hand"></div>
-            <div class="hand min-hand"></div>
-            <div class="hand second-hand"></div>
-            <div class="numbers">
-                <span style="top: 8%; left: 47%;">XII</span>
-                <span style="top: 20%; left: 70%;">I</span>
-                <span style="top: 40%; left: 85%;">II</span>
-                <span style="top: 65%; left: 90%;">III</span>
-                <span style="top: 82%; left: 75%;">IV</span>
-                <span style="top: 90%; left: 50%;">V</span>
-                <span style="top: 82%; left: 25%;">VI</span>
-                <span style="top: 65%; left: 10%;">VII</span>
-                <span style="top: 40%; left: 5%;">VIII</span>
-                <span style="top: 20%; left: 20%;">IX</span>
-                <span style="top: 10%; left: 30%;">X</span>
-                <span style="top: 5%; left: 60%;">XI</span>
-            </div>
+    <div class="contact">
+        <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <span>mohammadsinarahmati@gmail.com</span>
+        </div>
+        <div class="contact-item">
+            <i class="fab fa-telegram"></i>
+            <span>@sina_rahii</span>
         </div>
     </div>
-
-    <script>
-        function updateClock() {
-            const now = new Date();
-            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-            const tehranTime = new Date(utc + (3.5 * 3600000));
-
-            const seconds = tehranTime.getSeconds();
-            const minutes = tehranTime.getMinutes();
-            const hours = tehranTime.getHours();
-
-            const secondDeg = seconds * 6;
-            const minuteDeg = minutes * 6 + seconds * 0.1;
-            const hourDeg = ((hours % 12) * 30) + (minutes * 0.5);
-
-            document.querySelector('.second-hand').style.transform = `rotate(${secondDeg}deg)`;
-            document.querySelector('.min-hand').style.transform = `rotate(${minuteDeg}deg)`;
-            document.querySelector('.hour-hand').style.transform = `rotate(${hourDeg}deg)`;
-        }
-
-        setInterval(updateClock, 1000);
-        updateClock();
-    </script>
 </body>
 </html>
