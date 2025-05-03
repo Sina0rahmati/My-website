@@ -2,26 +2,56 @@
 <html lang="fa">
 <head>
     <meta charset="UTF-8">
-    <title>My Website</title>
+    <title>سایت سینا</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- فونت‌های گوگل -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Hello</h1>
-        <p>من سینا هستم، برنامه‌نویس</p>
+    <div class="container colorful-background">
+        <h1><strong>Hello</strong></h1>
+        <p class="intro">من سینا هستم، یه برنامه‌نویس تازه‌کارم</p>
+
+        <!-- ساعت دیجیتالی -->
+        <div id="clock" class="digital-clock">00:00:00</div>
+
+        <footer>ساخته شده با عشق</footer>
     </div>
 
-    <div class="contact">
-        <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <span>mohammadsinarahmati@gmail.com</span>
-        </div>
-        <div class="contact-item">
-            <i class="fab fa-telegram"></i>
-            <span>@sina_rahii</span>
+    <!-- راه‌های ارتباطی پایین صفحه -->
+    <div class="contact-footer">
+        <div class="contact-box">
+            <a href="mailto:mohammadsinarahmati@gmail.com" class="contact-item">
+                <img src="https://img.icons8.com/color/24/000000/gmail--v1.png" alt="Gmail Icon" />
+                mohammadsinarahmati@gmail.com
+            </a>
+            <a href="https://t.me/sina_rahii" class="contact-item" target="_blank">
+                <img src="https://img.icons8.com/color/24/000000/telegram-app--v1.png" alt="Telegram Icon" />
+                @sina_rahii
+            </a>
         </div>
     </div>
+
+    <!-- آیکون چرخشی موس -->
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/mouse.png" class="mouse-icon" alt="Mouse Icon">
+
+    <!-- اسکریپت ساعت -->
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const tehranTime = new Date(utc + (3.5 * 60 * 60 * 1000));
+
+            const h = String(tehranTime.getHours()).padStart(2, '0');
+            const m = String(tehranTime.getMinutes()).padStart(2, '0');
+            const s = String(tehranTime.getSeconds()).padStart(2, '0');
+
+            document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
 </body>
 </html>
