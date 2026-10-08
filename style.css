@@ -1,75 +1,110 @@
-/* فونت و تنظیمات پایه */
 body {
     font-family: 'Vazirmatn', sans-serif;
     margin: 0;
     padding: 0;
     direction: rtl;
+    background: #05050a;
+    color: #f2e6c0;
 }
 
-/* محتوای اصلی سایت */
 .container {
     text-align: center;
-    padding: 60px 20px;
-    color: white;
+    padding: 50px 20px 30px;
     min-height: 100vh;
+    box-sizing: border-box;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.18), transparent 55%),
+        radial-gradient(circle at 80% 100%, rgba(139, 0, 0, 0.18), transparent 50%),
+        radial-gradient(circle at 10% 90%, rgba(0, 90, 40, 0.15), transparent 50%),
+        #05050a;
 }
 
-/* پس‌زمینه رنگارنگ */
-.colorful-background {
-    background: linear-gradient(270deg, red, orange, yellow, green, cyan, blue, violet);
-    background-size: 1400% 1400%;
-    animation: gradientShift 20s ease infinite;
+/* نماد شیر و خورشید */
+.emblem {
+    width: 170px;
+    height: 170px;
+    filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.55));
 }
 
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+.emblem .rays {
+    transform-origin: 100px 100px;
+    animation: spin 60s linear infinite;
 }
 
-/* تیتر و معرفی */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
 h1 {
+    font-family: 'Orbitron', sans-serif;
     font-size: 48px;
-    margin-bottom: 20px;
+    margin: 20px 0 40px;
+    letter-spacing: 6px;
+    color: #d4af37;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
 }
 
-.intro {
-    font-size: 24px;
-    margin-bottom: 40px;
+/* ساعت‌ها */
+.clocks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    direction: ltr;
 }
 
-footer {
-    font-size: 16px;
-    opacity: 0.8;
+.clock-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 16px;
+    padding: 20px 28px;
+    min-width: 230px;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.12), inset 0 0 20px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* ساعت دیجیتالی */
+.clock-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 35px rgba(212, 175, 55, 0.35), inset 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.city {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d4af37;
+    margin-bottom: 10px;
+    direction: rtl;
+}
+
 .digital-clock {
     font-family: 'Orbitron', sans-serif;
-    font-size: 40px;
-    margin: 20px 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: inline-block;
-    padding: 12px 24px;
-    border-radius: 12px;
-    font-weight: bold;
-    color: #fff;
-    letter-spacing: 2px;
+    font-size: 36px;
+    color: #fff4d0;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 25px rgba(212, 175, 55, 0.4);
 }
 
-/* راه‌های ارتباطی پایین سایت */
+.date {
+    margin-top: 10px;
+    font-size: 13px;
+    opacity: 0.6;
+    letter-spacing: 1px;
+}
+
+/* راه‌های ارتباطی */
 .contact-footer {
-    background-color: #222;
+    background-color: #0c0c12;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
     padding: 20px 0;
     text-align: center;
     color: white;
     font-size: 14px;
-    margin-top: 50px;
 }
 
 .contact-box {
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid #555;
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(212, 175, 55, 0.35);
     border-radius: 8px;
     display: inline-block;
     padding: 12px 20px;
@@ -81,8 +116,13 @@ footer {
     justify-content: center;
     gap: 8px;
     margin: 5px 0;
-    color: white;
+    color: #f2e6c0;
     text-decoration: none;
+    transition: color 0.2s;
+}
+
+.contact-item:hover {
+    color: #d4af37;
 }
 
 .contact-item img {
@@ -90,25 +130,8 @@ footer {
     height: 20px;
 }
 
-/* آیکون چرخشی موس */
-.mouse-icon {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 40px;
-    height: 40px;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    animation: rotateMouse 2s linear infinite;
-    opacity: 0.7;
-}
-
-@keyframes rotateMouse {
-    from {
-        transform: translate(-50%, -50%) rotate(0deg);
-    }
-    to {
-        transform: translate(-50%, -50%) rotate(360deg);
-    }
+@media (max-width: 600px) {
+    h1 { font-size: 36px; }
+    .digital-clock { font-size: 30px; }
+    .clock-card { min-width: 80%; }
 }
