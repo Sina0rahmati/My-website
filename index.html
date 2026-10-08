@@ -5,21 +5,70 @@
     <title>سایت سینا</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <!-- فونت‌های گوگل -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container colorful-background">
-        <h1><strong>Hello</strong></h1>
-        <p class="intro">من سینا هستم، یه برنامه‌نویس تازه‌کارم</p>
+    <div class="container">
 
-        <!-- ساعت دیجیتالی -->
-        <div id="clock" class="digital-clock">00:00:00</div>
+        <!-- نماد شیر و خورشید -->
+        <svg class="emblem" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <g class="rays" stroke="#d4af37" stroke-linecap="round">
+                <g stroke-width="5">
+                    <line x1="100" y1="2" x2="100" y2="198" />
+                    <line x1="100" y1="2" x2="100" y2="198" transform="rotate(30 100 100)" />
+                    <line x1="100" y1="2" x2="100" y2="198" transform="rotate(60 100 100)" />
+                    <line x1="100" y1="2" x2="100" y2="198" transform="rotate(90 100 100)" />
+                    <line x1="100" y1="2" x2="100" y2="198" transform="rotate(120 100 100)" />
+                    <line x1="100" y1="2" x2="100" y2="198" transform="rotate(150 100 100)" />
+                </g>
+                <g stroke-width="3" opacity="0.7">
+                    <line x1="100" y1="16" x2="100" y2="184" transform="rotate(15 100 100)" />
+                    <line x1="100" y1="16" x2="100" y2="184" transform="rotate(45 100 100)" />
+                    <line x1="100" y1="16" x2="100" y2="184" transform="rotate(75 100 100)" />
+                    <line x1="100" y1="16" x2="100" y2="184" transform="rotate(105 100 100)" />
+                    <line x1="100" y1="16" x2="100" y2="184" transform="rotate(135 100 100)" />
+                    <line x1="100" y1="16" x2="100" y2="184" transform="rotate(165 100 100)" />
+                </g>
+            </g>
+            <circle cx="100" cy="100" r="62" fill="#0a0a0f" stroke="#d4af37" stroke-width="3" />
+            <!-- یال -->
+            <circle cx="100" cy="100" r="52" fill="#a67c1a" />
+            <!-- گوش‌ها -->
+            <circle cx="68" cy="70" r="9" fill="#d4af37" />
+            <circle cx="132" cy="70" r="9" fill="#d4af37" />
+            <!-- صورت -->
+            <circle cx="100" cy="102" r="35" fill="#e6c25a" />
+            <!-- چشم‌ها -->
+            <ellipse cx="88" cy="94" rx="4" ry="5" fill="#0a0a0f" />
+            <ellipse cx="112" cy="94" rx="4" ry="5" fill="#0a0a0f" />
+            <!-- بینی و دهان -->
+            <path d="M92 106 L108 106 L100 116 Z" fill="#5a3b0a" />
+            <path d="M100 116 Q100 126 90 126 M100 116 Q100 126 110 126" stroke="#5a3b0a" stroke-width="2.5" fill="none" stroke-linecap="round" />
+        </svg>
 
-        <footer>ساخته شده با عشق</footer>
+        <h1>Hello</h1>
+
+        <!-- ساعت‌ها -->
+        <div class="clocks">
+            <div class="clock-card">
+                <div class="city">تهران</div>
+                <div class="digital-clock" data-tz="Asia/Tehran">00:00:00</div>
+                <div class="date" data-date-tz="Asia/Tehran"></div>
+            </div>
+            <div class="clock-card">
+                <div class="city">نیویورک</div>
+                <div class="digital-clock" data-tz="America/New_York">00:00:00</div>
+                <div class="date" data-date-tz="America/New_York"></div>
+            </div>
+            <div class="clock-card">
+                <div class="city">تل‌آویو</div>
+                <div class="digital-clock" data-tz="Asia/Jerusalem">00:00:00</div>
+                <div class="date" data-date-tz="Asia/Jerusalem"></div>
+            </div>
+        </div>
     </div>
 
-    <!-- راه‌های ارتباطی پایین صفحه -->
+    <!-- راه‌های ارتباطی -->
     <div class="contact-footer">
         <div class="contact-box">
             <a href="mailto:mohammadsinarahmati@gmail.com" class="contact-item">
@@ -33,25 +82,28 @@
         </div>
     </div>
 
-    <!-- آیکون چرخشی موس -->
-    <img src="https://img.icons8.com/ios-filled/50/ffffff/mouse.png" class="mouse-icon" alt="Mouse Icon">
-
-    <!-- اسکریپت ساعت -->
     <script>
-        function updateClock() {
+        function updateClocks() {
             const now = new Date();
-            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-            const tehranTime = new Date(utc + (3.5 * 60 * 60 * 1000));
 
-            const h = String(tehranTime.getHours()).padStart(2, '0');
-            const m = String(tehranTime.getMinutes()).padStart(2, '0');
-            const s = String(tehranTime.getSeconds()).padStart(2, '0');
+            document.querySelectorAll('[data-tz]').forEach(el => {
+                el.textContent = new Intl.DateTimeFormat('en-GB', {
+                    timeZone: el.dataset.tz,
+                    hour: '2-digit', minute: '2-digit', second: '2-digit',
+                    hour12: false
+                }).format(now);
+            });
 
-            document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+            document.querySelectorAll('[data-date-tz]').forEach(el => {
+                el.textContent = new Intl.DateTimeFormat('en-GB', {
+                    timeZone: el.dataset.dateTz,
+                    weekday: 'short', day: '2-digit', month: 'short', year: 'numeric'
+                }).format(now);
+            });
         }
 
-        setInterval(updateClock, 1000);
-        updateClock();
+        setInterval(updateClocks, 1000);
+        updateClocks();
     </script>
 </body>
-</html>
+                </html>
